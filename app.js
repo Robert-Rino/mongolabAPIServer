@@ -7,6 +7,7 @@ let cors = require('cors');
 let app = express();
 
 let routes = require('./routes/index.js');
+let pages = require('.routes/pages.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,5 +18,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1', routes);
+app.use('api/v1/pages', pages);
 
 module.exports = app;
