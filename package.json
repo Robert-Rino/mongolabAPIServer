@@ -1,0 +1,19 @@
+{
+  "name": "mongolab-api-server",
+  "version": "0.0.1",
+  "description": "api server use mongolab service",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robert-Rino/mongolabAPIServer.git"
+  },
+  "author": "Robert-Rino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Robert-Rino/mongolabAPIServer/issues"
+  },
+  "homepage": "https://github.com/Robert-Rino/mongolabAPIServer#readme"
+}
