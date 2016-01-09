@@ -4,6 +4,7 @@
   "description": "api server use mongolab service",
   "main": "app.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "npm test"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/Robert-Rino/mongolabAPIServer#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
     "express": "^4.13.3",
     "kerberos": "0.0.17",
     "mongodb": "^2.1.3",
