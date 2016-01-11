@@ -7,7 +7,7 @@ let app = require('../app');
 describe('Test Example', () => {
   it('should return api version', (done) => {
     supertest(app)
-      .get('/api/v1')
+      .get('/')
       .expect(200, done);
   });
 });
