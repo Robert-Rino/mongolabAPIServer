@@ -11,7 +11,7 @@ let dbConfig = null;
 if (hasDBConfig) {
   dbConfig = config.get('DB_CONFIG.url');
 }else {
-  dbConfig = process.env.DB_URL;
+  dbConfig = process.env.MONGOLAB_URI;
 }
 
 mongoose.connect(dbConfig);
