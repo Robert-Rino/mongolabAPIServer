@@ -4,5 +4,4 @@
 
 # For test you should open a local mongoDB first
 
-```mongod --port 27017 --dbpath /Users/robert/db/mongolabAPIServerDB
-```
+```mongod --port 27017 --dbpath /Users/robert/db/mongolabAPIServerDB```
