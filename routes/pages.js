@@ -1,7 +1,8 @@
 'use strict';
 let express = require('express');
 let router = express.Router();
-var Joi = require('joi');
+let Joi = require('joi');
+let mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({ action:String,//有access/leave
 userId:Number,
