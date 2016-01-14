@@ -14,7 +14,7 @@ if (hasDBConfig) {
   dbConfig = process.env.MONGOLAB_URI;
 }
 
-mongoose.connect(dbConfig);
+// mongoose.connect(dbConfig);
 
 let routes = require('./routes/index.js');
 let pages = require('./routes/pages.js');
