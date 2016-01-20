@@ -1,32 +1,35 @@
 'use strict';
 let express = require('express');
 let router = express.Router();
-let Joi = require('joi');
-let mongoose = require('mongoose');
+let moment = require('moment');
 
-let schema = new mongoose.Schema({ action:String,//有access/leave
-userId:Number,
-userAccount:String,
-page:String,//頁面資訊
-description:String,
-courseId:Number,
-chapterId:Number,
-time: { type: Date, default: Date.now }, });
-let pageRecord = mongoose.model('pageRecord', schema);
+let PageRecord = require('../models/page.js');
 
 /* GET /api/v1 return version */
-router.post('/saveLog', (req, res) => {
-  req.accepts('application/json');
-  let action = req.body.action;
-  let userId = req.body.userId;
-  let userAccount = req.body.userAccount;
-  let page = req.body.page;
-  let description = req.body.description;
-  let  courseId = req.body.courseId;
-  let  chapterId = req.body.chapterId;
+router.post('/saveLog', (req, res, err) => {
+  // if (err) {
+  //   console.log('schema validation fail');
+  //   return res.sendStatus(400);
+  // }
 
-  res.json({
-    version: 'v1',
+  req.accepts('application/json');
+  let data = req.body;
+  let nowTime = moment().unix();
+  let record = new PageRecord({
+    action:data.action,
+    userId:data.userId,
+    courseId:data.courseId,
+    page:data.page,
+    chapterId:data.chapterId,
+    time:nowTime,
   });
-});
+  record.save((err)=> {
+    if (err) {
+      return console.error('Error while saving data to MongoDB: ' + err);
+    }
+
+    res.sendStatus(201);
+  });
+}
+);
 module.exports = router;
