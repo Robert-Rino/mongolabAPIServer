@@ -30,6 +30,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-app.use('/page', pages);
+app.use('/api-v1/page', pages);
 
 module.exports = app;
