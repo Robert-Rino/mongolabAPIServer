@@ -7,7 +7,7 @@ const debug = require('debug')('page');
 
 let PageRecord = require('../models/page.js');
 
-router.post('/sPage', (req, res, err) => {
+router.post('/savePage', (req, res, err) => {
   req.accepts('application/json');
   let data = req.body;
   let nowTime = moment().unix();
@@ -30,18 +30,34 @@ router.post('/sPage', (req, res, err) => {
 });
 
 // can't remove with object id bug
-router.post('/rPage', (req, res, err) => {
-  console.log('rpage');
+router.post('/removetestPage', (req, res, err) => {
+  PageRecord.find().remove({ page: 'test page', }, (err, result) => {
+    if (err) {
+      debug(`Error while removing data from MongoDB: ${err} `);
+      return res.sendStatus(500);
+    }
+
+    res.status(200).send(result);
+  });
+});
+
+router.post('/readPage', (req, res, err) => {
   let data = req.body;
-  let targetId = data._id;
-  let record = new PageRecord();
-  record.remove({ _id:targetId, }, (err) => {
+  let userId = data.userId;
+  let courseId = data.courseId;
+  PageRecord.
+  find().
+  where('userId').equals(userId).
+  where('courseId').equals(courseId).
+  sort('time').
+  select('_id action chapterId').
+  exec((err, result) => {
     if (err) {
       debug(`Error while removing data from MongoDB: ${err} `);
       return res.sendStatus(410);
     }
 
-    res.sendStatus(200);
+    res.status(200).send(result);
   });
 });
 

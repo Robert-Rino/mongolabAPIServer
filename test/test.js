@@ -12,7 +12,7 @@ describe('Test Example', () => {
   });
 });
 
-describe('test api-v1/page/sPage', () => {
+describe('test api-v1/page/savePage', () => {
   it('should return 201', function (done) {
     this.timeout(5000);
     let data = {
@@ -24,8 +24,44 @@ describe('test api-v1/page/sPage', () => {
     };
 
     supertest(app)
-      .post('/api-v1/page/sPage')
+      .post('/api-v1/page/savePage')
       .send(data)
       .expect(201, done);
+  });
+});
+
+describe('test api-v1/page/readPage', () => {
+  it('should return 200', function (done) {
+    let data = {
+      userId:123,
+      courseId:6,
+    };
+
+    supertest(app)
+      .post('/api-v1/page/readPage')
+      .send(data)
+      .expect(200, done);
+  });
+});
+
+describe('test api-v1/page/removeTestPage', () => {
+  it('should affect one line and return 200', function (done) {
+
+    supertest(app)
+      .post('/api-v1/page/removeTestPage')
+      .expect(function (res) {
+        res.body.n = 1;
+      })
+      .expect(200, done);
+  });
+
+  it('should affect zero line and return 200', function (done) {
+
+    supertest(app)
+      .post('/api-v1/page/removeTestPage')
+      .expect(function (res) {
+        res.body.n = 0;
+      })
+      .expect(200, done);
   });
 });
