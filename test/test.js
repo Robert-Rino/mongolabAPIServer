@@ -49,9 +49,6 @@ describe('test api-v1/page/removeTestPage', () => {
 
     supertest(app)
       .post('/api-v1/page/removeTestPage')
-      .expect(function (res) {
-        res.body.n = 1;
-      })
       .expect(200, done);
   });
 
