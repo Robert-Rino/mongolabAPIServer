@@ -43,3 +43,25 @@ describe('test api-v1/page/readPage', () => {
       .expect(200, done);
   });
 });
+
+describe('test api-v1/page/removeTestPage', () => {
+  it('should affect one line and return 200', function (done) {
+
+    supertest(app)
+      .post('/api-v1/page/removeTestPage')
+      .expect(function (res) {
+        res.body.n = 1;
+      })
+      .expect(200, done);
+  });
+
+  it('should affect zero line and return 200', function (done) {
+
+    supertest(app)
+      .post('/api-v1/page/removeTestPage')
+      .expect(function (res) {
+        res.body.n = 0;
+      })
+      .expect(200, done);
+  });
+});
