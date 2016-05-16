@@ -19,6 +19,7 @@ mongoose.connect(dbConfig);
 let routes = require('./routes/index.js');
 let pages = require('./routes/pages.js');
 let cloud = require('./routes/cloud.js');
+let exercise = require('./routes/exercise.js');
 
 let app = express();
 
@@ -31,7 +32,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-app.use('/page', pages);
-app.use('/cloud', cloud);
+app.use('/api/v1/page', pages);
+app.use('api/v1/cloud', cloud);
+app.use('/api/v1/exercise', exercise);
 
 module.exports = app;
