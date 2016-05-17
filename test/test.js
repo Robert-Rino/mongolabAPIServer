@@ -16,11 +16,11 @@ describe('test api/v1/page/savePage', () => {
   it('should return 201', function (done) {
     this.timeout(5000);
     let data = {
-      action:'access',
-      userId:123,
-      courseId:6,
-      page:'test page',
-      chapterId:666,
+      action: 'access',
+      userId: 123,
+      courseId: 6,
+      page: 'test page',
+      chapterId: 666,
     };
 
     supertest(app)
@@ -33,8 +33,8 @@ describe('test api/v1/page/savePage', () => {
 describe('test api/v1/page/readPage', () => {
   it('should return 200', function (done) {
     let data = {
-      userId:123,
-      courseId:6,
+      userId: 123,
+      courseId: 6,
     };
 
     supertest(app)
