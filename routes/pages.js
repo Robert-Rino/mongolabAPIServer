@@ -12,12 +12,12 @@ router.post('/savePage', (req, res, err) => {
   let data = req.body;
   let nowTime = moment().unix();
   let record = new PageRecord({
-    action:data.action,
-    userId:data.userId,
-    courseId:data.courseId,
-    page:data.page,
-    chapterId:data.chapterId,
-    time:nowTime,
+    action: data.action,
+    userId: data.userId,
+    courseId: data.courseId,
+    page: data.page,
+    chapterId: data.chapterId,
+    time: nowTime,
   });
   record.save((err)=> {
     if (err) {
